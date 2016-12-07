@@ -1,0 +1,16 @@
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.fs
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/bin/Debug/Backend.exe.mdb
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/bin/Debug/Backend.exe
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/obj/x86/Debug/Backend.exe
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/obj/x86/Debug/Backend.exe.mdb
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/bin/Debug/MonoGame.Framework.dll
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/bin/Debug/NVorbis.dll
+/home/sjors/Projects/AlgorithmsAssignment/Algorithms/Backend/bin/Debug/OpenTK.dll
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.fs
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/bin/Debug/Backend.exe.mdb
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/bin/Debug/Backend.exe
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/obj/x86/Debug/Backend.exe
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/obj/x86/Debug/Backend.exe.mdb
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/bin/Debug/MonoGame.Framework.dll
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/bin/Debug/NVorbis.dll
+/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Backend/bin/Debug/OpenTK.dll

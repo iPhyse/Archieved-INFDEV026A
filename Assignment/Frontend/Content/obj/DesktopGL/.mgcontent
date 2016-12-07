@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/numberingFont.spritefont</File>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/circle.png</File>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/crosshair.png</File>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/crosshairs.png</File>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/lighting.png</File>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/linearGlow.png</File>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/roads.jpg</File>
+    <File>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/tileset.png</File>
+  </SourceFiles>
+</SourceFileCollection>
