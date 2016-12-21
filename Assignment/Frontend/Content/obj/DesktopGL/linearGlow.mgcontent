@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/linearGlow.png</SourceFile>
-  <SourceTime>2016-11-25T00:17:36+01:00</SourceTime>
-  <DestFile>/Users/iphyse/Documents/Github_projects/INFDEV026A/Assignment/Frontend/Content/bin/DesktopGL/linearGlow.xnb</DestFile>
-  <DestTime>2016-12-07T11:30:44+01:00</DestTime>
+  <SourceFile>C:/Users/RickRichter/Desktop/INFDEV026A/Assignment/Frontend/Content/linearGlow.png</SourceFile>
+  <SourceTime>2016-12-07T13:16:32.9094441+01:00</SourceTime>
+  <DestFile>C:/Users/RickRichter/Desktop/INFDEV026A/Assignment/Frontend/Content/bin/DesktopGL/linearGlow.xnb</DestFile>
+  <DestTime>2016-12-07T13:17:31.486896+01:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2016-03-30T08:36:22+02:00</ImporterTime>
+  <ImporterTime>2016-04-13T18:44:32+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2016-03-30T08:36:22+02:00</ProcessorTime>
+  <ProcessorTime>2016-04-13T18:44:32+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
