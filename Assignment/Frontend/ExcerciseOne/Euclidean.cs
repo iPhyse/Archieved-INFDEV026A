@@ -5,7 +5,7 @@ namespace Frontend.ExcerciseOne
 {
     public static class Euclidean
     {
-        //Euclidean distance between vector house and buidling, square root( square( x.house - x.building ) + square( y.house - y.building ) )
+        //Euclidean distance between vector house and building, square root( square( x.house - x.building ) + square( y.house - y.building ) )
         public static double Distance(Vector2 house, Vector2 building)
         {
             var x = Math.Pow(house.X - building.X, 2);
