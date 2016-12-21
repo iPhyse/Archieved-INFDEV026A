@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Frontend.AssignmentOne;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,17 +56,17 @@ namespace EntryPoint
             var buildings = specialBuildings.ToList();
 
             //List of buildings and distances related to the building by the euclidean formula
-            List<KeyValuePair<Vector2, double>> specialBuildingDistances = buildings.Select(building => new KeyValuePair<Vector2, double>(building, EuclideanDistance(house, building))).ToList();
+            List<KeyValuePair<Vector2, double>> specialBuildingDistances = buildings.Select(building => new KeyValuePair<Vector2, double>(building, Euclidean.Distance(house, building))).ToList();
             Console.WriteLine("--[Unsorted before Mergesort]--"); //output for debug
             for (int i = 0; i < specialBuildingDistances.Count; i++)
             {
                 Console.WriteLine(specialBuildingDistances[i].Value); //output for debug
             }
 
-
-            MergeSort(specialBuildingDistances, 0, specialBuildingDistances.Count - 1);
+            
 
             Console.WriteLine("\n--[Euclidean and MergesSort]--"); //output for debug
+            MergeSort.Sort(specialBuildingDistances, 0, specialBuildingDistances.Count - 1);
             for (int i = 0; i < specialBuildingDistances.Count; i++)
             {
                 buildings[i] = specialBuildingDistances[i].Key;
@@ -122,71 +123,6 @@ namespace EntryPoint
             }
             return result;
         }
-
-        //Assignment 1 Merge sort + euclidean distance
-        private static void DoMerge(List<KeyValuePair<Vector2, double>> vectorList, int l, int m, int r)
-        {
-            int sizeLeft = m - l + 1;
-            int sizeRight = r - m;
-
-            var listLeft = new List<KeyValuePair<Vector2, double>>();
-            var listRight = new List<KeyValuePair<Vector2, double>>();
-
-            for (int i = 0; i < sizeLeft; i++)
-            {
-                listLeft.Add(vectorList[l + i]);
-            }
-
-            for (int i = 0; i < sizeRight; i++)
-            {
-                listRight.Add(vectorList[m + i + 1]);
-            }
-
-            listLeft.Add(new KeyValuePair<Vector2, double>(new Vector2(Single.MaxValue), Double.MaxValue));
-            listRight.Add(new KeyValuePair<Vector2, double>(new Vector2(Single.MaxValue), Double.MaxValue));
-
-            int indexLeft = 0;
-            int indexRight = 0;
-
-            for (int x = l; x <= r; x++)
-            {
-                if (listLeft[indexLeft].Value <= listRight[indexRight].Value)
-                {
-                    vectorList[x] = listLeft[indexLeft];
-                    indexLeft++;
-                }
-                else
-                {
-                    vectorList[x] = listRight[indexRight];
-                    indexRight++;
-                }
-            }
-
-        }
-
-        //Merge sort algorithm (recursive), as described "Use the merge sort as sorting algorithm"
-        private static void MergeSort(List<KeyValuePair<Vector2, double>> input, int l, int r)
-        {
-            if (l < r)
-            {
-                int m = (l + r) / 2;
-
-                MergeSort(input, l, m);
-                MergeSort(input, m + 1, r);
-
-                DoMerge(input, l, m, r);
-            }
-        }
-
-        //euclidean distance between vector house and buidling, square root( square( x.house - x.building ) + square( y.house - y.building ) )
-        private static double EuclideanDistance(Vector2 house, Vector2 building)
-        {
-            var x = Math.Pow(house.X - building.X, 2);
-            var y = Math.Pow(house.Y - building.Y, 2);
-            var distance = Math.Sqrt(x + y);
-            return distance;
-        }
-        //END: Assignment 1
-
+        
     }
 }
