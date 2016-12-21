@@ -1,4 +1,4 @@
-﻿using Frontend.AssignmentOne;
+﻿using Frontend.ExcerciseOne;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -57,15 +57,16 @@ namespace EntryPoint
 
             //List of buildings and distances related to the building by the euclidean formula
             List<KeyValuePair<Vector2, double>> specialBuildingDistances = buildings.Select(building => new KeyValuePair<Vector2, double>(building, Euclidean.Distance(house, building))).ToList();
-            Console.WriteLine("--[Unsorted before Mergesort]--"); //output for debug
+            
+            ////START; output for debug, can be completely removed
+            Console.WriteLine("--[Unsorted before Mergesort]--");
             for (int i = 0; i < specialBuildingDistances.Count; i++)
             {
-                Console.WriteLine(specialBuildingDistances[i].Value); //output for debug
+                Console.WriteLine(specialBuildingDistances[i].Value); 
             }
+            Console.WriteLine("\n--[Euclidean and MergesSort]--");
+            ////END; output for debug
 
-            
-
-            Console.WriteLine("\n--[Euclidean and MergesSort]--"); //output for debug
             MergeSort.Sort(specialBuildingDistances, 0, specialBuildingDistances.Count - 1);
             for (int i = 0; i < specialBuildingDistances.Count; i++)
             {
