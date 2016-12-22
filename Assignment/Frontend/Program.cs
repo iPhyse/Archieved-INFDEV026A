@@ -1,4 +1,5 @@
 ﻿using Frontend.ExcerciseOne;
+using Frontend.ExcerciseTwo;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -78,15 +79,36 @@ namespace EntryPoint
             //return specialBuildings.OrderBy(v => Vector2.Distance(v, house));
         }
 
-        private static IEnumerable<IEnumerable<Vector2>> FindSpecialBuildingsWithinDistanceFromHouse(IEnumerable<Vector2> specialBuildings,
-                                                         IEnumerable<Tuple<Vector2, float>> housesAndDistances)
+        private static IEnumerable<IEnumerable<Vector2>> FindSpecialBuildingsWithinDistanceFromHouse(IEnumerable<Vector2> specialBuildings, IEnumerable<Tuple<Vector2, float>> housesAndDistances)
         {
+            List<List<Vector2>> foundInRange = new List<List<Vector2>>();
+
+            //Create a new tree root and fill the tree with all building entities
+            var root = new Node<Vector2>();
+            foreach (Vector2 specialBuilding in specialBuildings)
+            {
+                root = Tree.Insert(specialBuilding, root, true);
+                Console.WriteLine("building value : " + specialBuilding); //output for debug
+            }
+            
+            foreach (var houseAndDistance in housesAndDistances)
+            {
+                List<Vector2> inRange = new List<Vector2>();
+                Console.WriteLine("Building item 1: " + houseAndDistance.Item1 + ", Building item 2: " + houseAndDistance.Item2);
+                InRange.GetBuildings(root, houseAndDistance.Item1, houseAndDistance.Item2, inRange);
+                foundInRange.Add(inRange);
+
+            }
+            
+            return foundInRange;
+
+            /*
             return
             from h in housesAndDistances
             select
             from s in specialBuildings
             where Vector2.Distance(h.Item1, s) <= h.Item2
-            select s;
+            select s;*/
         }
 
         private static IEnumerable<Tuple<Vector2, Vector2>> FindRoute(Vector2 startingBuilding,
@@ -124,6 +146,5 @@ namespace EntryPoint
             }
             return result;
         }
-        
     }
 }
