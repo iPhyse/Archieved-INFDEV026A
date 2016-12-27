@@ -1,7 +1,9 @@
 ﻿using Frontend.ExcerciseOne;
+using Frontend.ExcerciseThree;
 using Frontend.ExcerciseTwo;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -131,7 +133,39 @@ namespace EntryPoint
                                                  IEnumerable<Tuple<Vector2,
                                                  Vector2>> roads)
         {
-            List<List<Tuple<Vector2, Vector2>>> result = new List<List<Tuple<Vector2, Vector2>>>();
+
+            FloydWarshall fwshall = new FloydWarshall(roads.ToArray());
+
+            List<List<Tuple<Vector2, Vector2>>> routes = new List<List<Tuple<Vector2, Vector2>>>();
+
+            IEnumerator roadsEnumerator = roads.GetEnumerator();
+            int i = 0;
+            while (roadsEnumerator.MoveNext())
+            {
+                if (((Tuple<Vector2, Vector2>)roadsEnumerator.Current).Item1 == startingBuilding)
+                    break;
+                i++;
+            }
+
+            IEnumerator destionation = destinationBuildings.GetEnumerator();
+            while (destionation.MoveNext())
+            {
+                for (int j = 0; j < fwshall.predecessor.GetLength(1); j++)
+                {
+                    if (fwshall.predecessor[i, j].Item2 == (Vector2)destionation.Current)
+                    {
+                        Console.WriteLine("Distance from: " + startingBuilding + " -> " + destionation.Current + " = " + fwshall.distance[i, j]); //output for debug
+                        List<Tuple<Vector2, Vector2>> temp = new List<Tuple<Vector2, Vector2>>();
+                        temp.Add((Tuple<Vector2, Vector2>) destionation.Current);
+                        routes.Add(temp);
+                    }
+                }
+            }
+
+            return new List<List<Tuple<Vector2, Vector2>>>();
+
+
+            /*List<List<Tuple<Vector2, Vector2>>> result = new List<List<Tuple<Vector2, Vector2>>>();
             foreach (var d in destinationBuildings)
             {
                 var startingRoad = roads.Where(x => x.Item1.Equals(startingBuilding)).First();
@@ -144,7 +178,7 @@ namespace EntryPoint
                 }
                 result.Add(fakeBestPath);
             }
-            return result;
+            return result;*/
         }
     }
 }
