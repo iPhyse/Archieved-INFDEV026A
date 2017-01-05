@@ -117,15 +117,37 @@ namespace EntryPoint
                                           Vector2 destinationBuilding,
                                           IEnumerable<Tuple<Vector2, Vector2>> roads)
         {
-            var startingRoad = roads.Where(x => x.Item1.Equals(startingBuilding)).First();
+
+            List<Tuple<Vector2, Vector2>> tempPath = new List<Tuple<Vector2, Vector2>>();
+            List<Tuple<Vector2, Vector2>> result = new List<Tuple<Vector2, Vector2>>();
+            //List<Tuple<Vector2, Vector2>> routes = roads.ToList();
+
+            tempPath = Dijkstra.insertGraph((List<Tuple<Vector2, Vector2>>)roads.ToList(), startingBuilding, destinationBuilding).ShortestPath(startingBuilding, destinationBuilding);
+
+            Console.WriteLine("start route: {0} to destination: {1}", startingBuilding, destinationBuilding); //output for debug
+
+            int count = 0; //Only used for output debug, route point indication. Could be removed..
+            while (tempPath.Count > 0)
+            {
+                Console.WriteLine("Route point {0}: {1}", ++count, tempPath[tempPath.Count - 1]); //output for debug
+                result.Add(tempPath[tempPath.Count - 1]);
+                tempPath.RemoveAt(tempPath.Count - 1);
+            }
+            
+            return result;
+
+            /*var startingRoad = roads.Where(x => x.Item1.Equals(startingBuilding)).First();
             List<Tuple<Vector2, Vector2>> fakeBestPath = new List<Tuple<Vector2, Vector2>>() { startingRoad };
             var prevRoad = startingRoad;
             for (int i = 0; i < 30; i++)
             {
                 prevRoad = (roads.Where(x => x.Item1.Equals(prevRoad.Item2)).OrderBy(x => Vector2.Distance(x.Item2, destinationBuilding)).First());
                 fakeBestPath.Add(prevRoad);
+
+                Console.WriteLine(prevRoad.ToString());
+
             }
-            return fakeBestPath;
+            return fakeBestPath;*/
         }
 
         private static IEnumerable<IEnumerable<Tuple<Vector2, Vector2>>> FindRoutesToAll(Vector2 startingBuilding,
@@ -134,7 +156,10 @@ namespace EntryPoint
                                                  Vector2>> roads)
         {
 
-            FloydWarshall fwshall = new FloydWarshall(roads.ToArray());
+            FloydWarshall floydwarshall = new FloydWarshall(roads.ToArray());
+            //floydwarshall.SaveAdjacencyToFile();
+            //floydwarshall.SaveDistanceToFile();
+            //floydwarshall.SavePredecessorToFile();
 
             List<List<Tuple<Vector2, Vector2>>> routes = new List<List<Tuple<Vector2, Vector2>>>();
 
@@ -147,16 +172,17 @@ namespace EntryPoint
                 i++;
             }
 
-            IEnumerator destionation = destinationBuildings.GetEnumerator();
-            while (destionation.MoveNext())
+            //IEnumerator destinationBuildingsEnumerator = destinationBuildings.GetEnumerator();
+            while (destinationBuildings.GetEnumerator().MoveNext())
             {
-                for (int j = 0; j < fwshall.predecessor.GetLength(1); j++)
+                for (int j = 0; j < floydwarshall.predecessor.GetLength(1); j++)
                 {
-                    if (fwshall.predecessor[i, j].Item2 == (Vector2)destionation.Current)
+                    //if (floydwarshall.predecessor[i, j].Item2 == (Vector2)destinationBuildings.GetEnumerator().Current)
+                    if (floydwarshall.predecessor[i, j].Item2 == (Vector2)destinationBuildings.GetEnumerator().Current)
                     {
-                        Console.WriteLine("Distance from: " + startingBuilding + " -> " + destionation.Current + " = " + fwshall.distance[i, j]); //output for debug
+                        Console.WriteLine("Distance from {0} to {1} is {2}.", startingBuilding, destinationBuildings.GetEnumerator().Current, floydwarshall.distance[i, j]);
                         List<Tuple<Vector2, Vector2>> temp = new List<Tuple<Vector2, Vector2>>();
-                        temp.Add((Tuple<Vector2, Vector2>) destionation.Current);
+                        temp.Add((Tuple<Vector2, Vector2>)destinationBuildings.GetEnumerator());
                         routes.Add(temp);
                     }
                 }
