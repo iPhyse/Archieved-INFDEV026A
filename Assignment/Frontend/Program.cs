@@ -89,7 +89,7 @@ namespace EntryPoint
             var root = new Node<Vector2>();
             foreach (Vector2 specialBuilding in specialBuildings)
             {
-                root = Tree.Insert(specialBuilding, root, true);
+                root = Tree.Insert(root, specialBuilding);
                 Console.WriteLine("building value : " + specialBuilding); //output for debug
             }
             

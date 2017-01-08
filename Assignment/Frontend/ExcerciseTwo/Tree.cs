@@ -4,40 +4,26 @@ namespace Frontend.ExcerciseTwo
 {
     public static class Tree
     {
-        public static Node<Vector2> Insert(Vector2 b, Node<Vector2> n, bool x)
+        public static Node<Vector2> Insert(Node<Vector2> root, Vector2 key)
         {
-            if (n == null)
+            if (root == null)
             {
                 //When the tree is empty on initiatiation, create a root
-                n = new Node<Vector2>(b, new Node<Vector2>(), new Node<Vector2>());
+                root = new Node<Vector2>(key, new Node<Vector2>(), new Node<Vector2>());
             }
-            else if (n.Vector2.Equals(b)) { } //The node does already excist in the tree
+            else if (root.Vector2.Equals(key)) { } //The node does already excist in the tree
             else
             {
-                if (x)
-                {
-                    if (b.X < n.Vector2.X)
+                    if (key.Y < root.Vector2.Y)
                     {
-                        n.Left = Insert(b, n.Left, false);
+                        root.Left = Insert(root.Left, key);
                     }
                     else
                     {
-                        n.Right = Insert(b, n.Right, false);
+                        root.Right = Insert(root.Right, key);
                     }
-                }
-                else
-                {
-                    if (b.Y < n.Vector2.Y)
-                    {
-                        n.Left = Insert(b, n.Left, true);
-                    }
-                    else
-                    {
-                        n.Right = Insert(b, n.Right, true);
-                    }
-                }
             }
-            return n;
+            return root;
         }
     }
 }
